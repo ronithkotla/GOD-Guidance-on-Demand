@@ -62,11 +62,11 @@ def main():
             st.markdown(f"<div style='text-align: left; background-color: #000000; padding: 10px; border-radius: 10px;margin: 5px 0;'><strong>GOD:   </strong>{msg['content']}</div>", unsafe_allow_html=True)
 
     # Input field for new messages
-    user_input = st.chat_input("Your Response:")
+    user_input = st.chat_input("Your Response:",key="user_input")
     if user_input:
         chatbot = GroqChatbot()
         bot_response = chatbot.get_response(user_input)
-        main()
+        
 
 if __name__ == "__main__":
     main()
