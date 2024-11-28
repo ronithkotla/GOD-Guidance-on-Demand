@@ -1,4 +1,6 @@
 langchain
 langchain-groq
 langchain-community
+langchain-core
+time
 streamlit
