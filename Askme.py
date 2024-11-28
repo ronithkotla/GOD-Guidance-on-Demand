@@ -1,11 +1,12 @@
 import time
 import streamlit as st
+from pdfminer.high_level import extract_text
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.exceptions import OutputParserException
 
 # Set your Groq API key directly
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "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"
 
 # Define the chatbot class
 class GroqChatbot:
@@ -62,7 +63,22 @@ def main():
         st.session_state.conversation_history = []
     if 'user_input' not in st.session_state:
         st.session_state.user_input = ""
+    if 'pdf_processed' not in st.session_state:
+        st.session_state.pdf_processed = False
+
+    # PDF file uploader
+    uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
+    if uploaded_file is not None and not st.session_state.pdf_processed:
+        extracted_text = extract_text(uploaded_file)
+       
+        st.session_state.pdf_processed = True
+
+        # After processing the PDF, prompt the chatbot to start asking questions
+        chatbot = GroqChatbot()
     
+        initial_question = chatbot.get_response(extracted_text)  # Get the first question based on PDF content
+        # st.session_state.conversation_history.append({"role": "Interviewer", "content": initial_question})
+
     # Display conversation history with styled boxes
     if st.session_state.conversation_history:
         for msg in st.session_state.conversation_history:
