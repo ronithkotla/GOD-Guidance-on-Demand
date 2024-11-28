@@ -63,9 +63,11 @@ def main():
 
     # Input field for new messages
     user_input = st.chat_input("Your Response:",key="user_input")
-    if user_input:
+    if st.session_state.user_input:
+        # Initialize the chatbot instance
         chatbot = GroqChatbot()
-        bot_response = chatbot.get_response(user_input)
+        # Get response from the chatbot with the latest user input
+        bot_response = chatbot.get_response(st.session_state.user_input)
         
 
 if __name__ == "__main__":
