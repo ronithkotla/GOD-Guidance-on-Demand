@@ -5,7 +5,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.exceptions import OutputParserException
 
 # Set your Groq API key directly
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "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"
 
 # Define the chatbot class
 class GroqChatbot:
