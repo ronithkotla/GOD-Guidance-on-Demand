@@ -1,5 +1,5 @@
-streamlit
-langchain
+﻿langchain
 langchain-community
 langchain-groq
+streamlit
 pdfminer.six
