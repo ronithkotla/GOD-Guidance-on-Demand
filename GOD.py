@@ -46,7 +46,7 @@ class GroqChatbot:
                     return f"Error: {str(e)}"
 
 # Streamlit UI setup
-def try1():
+def main():
     st.title("GOD (Guidance On Demand)")
     st.write("Ask your doubts and assignment questions.")
 
@@ -66,7 +66,7 @@ def try1():
     if user_input:
         chatbot = GroqChatbot()
         bot_response = chatbot.get_response(user_input)
-        
+        main()
 
-
-try1()
+if __name__ == "__main__":
+    main()
