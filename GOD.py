@@ -66,7 +66,7 @@ def main():
     if user_input:
         chatbot = GroqChatbot()
         bot_response = chatbot.get_response(user_input)
-        st.rerun()
+        
 
 if __name__ == "__main__":
     main()
