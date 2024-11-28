@@ -6,7 +6,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.exceptions import OutputParserException
 
 # Set your Groq API key directly
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "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"
 
 # Define the chatbot class
 class GroqChatbot:
@@ -27,8 +27,9 @@ class GroqChatbot:
             {prompt_text}
 
             ### INSTRUCTION:
-            Respond as a professional career guidance expert. Provide basic suggestions and provide advice and suggestions on the resume given,feedback on strength and weakness sections to improve,hightlight resume score. 
+            Respond as a professional career guidance expert. Provide basic suggestions and provide advice and suggestions on the resume given,feedback on strength and weakness sections to improve,resume score. 
             Do not provide any help or advice that is not a part of career related feild; and ask the user if they need any advice or suggestion related to career guidance.Give reply less than 50 words after giving score.
+            if user input is stop or no,stop giving guidance and say thankyou let me know if you need any advice later. 
             """
         )
         
