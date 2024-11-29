@@ -4,6 +4,11 @@ from pdfminer.high_level import extract_text
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.exceptions import OutputParserException
+import os
+
+# Remove proxy settings if present
+os.environ.pop("http_proxy", None)
+os.environ.pop("https_proxy", None)
 
 # Set your Groq API key directly
 GROQ_API_KEY = "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"
