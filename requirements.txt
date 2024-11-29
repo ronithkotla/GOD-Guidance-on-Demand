@@ -1,6 +1,5 @@
-﻿langchain
-langchain-community
-langchain-groq
-streamlit
-pdfminer.six
-groq
+langchain==0.3.8
+langchain-core==0.3.21
+langchain-groq==0.2.1
+groq==0.4.1
+streamlit==1.39.0
