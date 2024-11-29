@@ -5,10 +5,7 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.exceptions import OutputParserException
 import os
-
-# Remove proxy settings if present
-os.environ.pop("http_proxy", None)
-os.environ.pop("https_proxy", None)
+from groq import Groq
 
 # Set your Groq API key directly
 GROQ_API_KEY = "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"
@@ -16,7 +13,7 @@ GROQ_API_KEY = "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"
 # Define the chatbot class
 class GroqChatbot:
     def __init__(self):
-        self.llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama-3.1-70b-versatile",proxies={...})
+        self.llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama-3.1-70b-versatile")
 
     def get_response(self, user_input):
         # Append the user's input to the conversation history
