@@ -48,30 +48,30 @@ class GroqChatbot:
 def main():
     st.title("GOD (Guidance On Demand)")
     st.write("Ask your doubts and assignment questions.")
+    
+    def try1():    # Initialize session state
+        if 'conversation_history' not in st.session_state:
+            st.session_state.conversation_history = []
 
-    # Initialize session state
-    if 'conversation_history' not in st.session_state:
-        st.session_state.conversation_history = []
+        # Display conversation history
+        for msg in st.session_state.conversation_history:
+            if msg['role'] == 'user':
+                st.markdown(f"<div style='text-align: right; background-color: #414A4C; padding: 10px; border-radius: 10px;margin: 5px 0;'><strong>You:   </strong>{msg['content']}</div>", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<div style='text-align: left; background-color: #000000; padding: 10px; border-radius: 10px;margin: 5px 0;'><strong>GOD:   </strong>{msg['content']}</div>", unsafe_allow_html=True)
 
-    # Display conversation history
-    for msg in st.session_state.conversation_history:
-        if msg['role'] == 'user':
-            st.markdown(f"<div style='text-align: right; background-color: #414A4C; padding: 10px; border-radius: 10px;margin: 5px 0;'><strong>You:   </strong>{msg['content']}</div>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<div style='text-align: left; background-color: #000000; padding: 10px; border-radius: 10px;margin: 5px 0;'><strong>GOD:   </strong>{msg['content']}</div>", unsafe_allow_html=True)
+        # Input field for new messages
+        user_input=st.chat_input("Your Response:")
 
-    # Input field for new messages
-    st.text_input("Your Response:", key="user_input", on_change=send_message)
 
-def send_message():
-    if st.session_state.user_input:
-        # Initialize the chatbot instance
-        chatbot = GroqChatbot()
-        # Get response from the chatbot with the latest user input
-        bot_response = chatbot.get_response(st.session_state.user_input)
-        
-        # Clear the input for the next question
-        st.session_state.user_input = ""
-
+        if user_input:
+            # Initialize the chatbot instance
+            chatbot = GroqChatbot()
+            # Get response from the chatbot with the latest user input
+            bot_response = chatbot.get_response(user_input)
+            st.rerun()
+            # Clear the input for the next question
+            
+    try1()
 if __name__ == "__main__":
     main()
