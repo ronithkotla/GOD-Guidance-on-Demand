@@ -10,8 +10,8 @@ GROQ_API_KEY = "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"
 class GroqChatbot:
     def __init__(self):
         self.llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama-3.1-70b-versatile")
-          # Ensure no proxies are being passed
-    def get_response( self,user_input):
+         # Ensure no proxies are being passed
+    def get_response(self, user_input):
         st.session_state.conversation_history.append({"role": "user", "content": user_input})
         prompt_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state.conversation_history[-5:]])
 
@@ -30,7 +30,7 @@ class GroqChatbot:
         retries = 3
         for attempt in range(retries):
             try:
-                result = (prompt |self.llm).invoke({})
+                result = (prompt | self.llm).invoke({})
                 bot_response = result.content.strip()
                 st.session_state.conversation_history.append({"role": "GOD", "content": bot_response})
                 return bot_response
